@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.openai/
+.sites-runtime/
+*.zip
+qa/
+.DS_Store
+Thumbs.db
