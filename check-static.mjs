@@ -20,4 +20,6 @@ for(const page of pages){
 }
 if(problems.length){console.error(problems.join('\n'));process.exit(1)}
 console.log('PASS: 3 pages, local links, anchors, unique IDs, headings, image alt and metadata.');
-console.log('Public asset total: '+fs.statSync('docs/assets/hero.webp').size+' byte hero image. Form intentionally has no send endpoint.');
+const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
+if(!home.includes('action="https://formspree.io/f/mbgjezdo"')||!home.includes('id="inquiry-success"')||!home.includes('id="send-status"'))throw new Error('Form endpoint or status containers missing');
+console.log('PASS: verified public Formspree endpoint and success/error containers. Hero image: '+fs.statSync('docs/assets/hero.webp').size+' bytes.');
