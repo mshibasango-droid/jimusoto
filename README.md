@@ -7,7 +7,7 @@
 - 旧GitHub Pages URL：<https://mshibasango-droid.github.io/jimusoto/>（独自ドメインへ転送）
 - 公開元：`main` ブランチの `/docs` フォルダー
 - 独自ドメイン：`jimusoto.jp`（XServerドメインで取得、2026年9月12日に接続設定を保存）
-- 接続状況：DNSの反映・GitHubの証明書発行を確認中。HTTPS強制は証明書の準備後に有効化します。
+- 接続状況：2026年9月13日にDNS確認が成功し、Enforce HTTPSを有効化。公式URLのHTTPS表示とHTTP・www・旧URLからの転送を確認しました。
 
 HTML・CSS・JavaScriptだけの静的サイトです。依存パッケージのインストールやビルドは不要です。`docs/` が編集対象かつ公開ファイルです。
 
@@ -21,7 +21,7 @@ HTML・CSS・JavaScriptだけの静的サイトです。依存パッケージの
 
 問い合わせ先は **info@jimusoto.jp** です。さくらのメールボックスで外部送受信・SPF/DKIM/DMARCのPASSを確認しました。Formspree Free（月50件）を接続し、ダミー問い合わせの通知と返信先も確認しています。
 
-**2026年9月12日、独自ドメインのHTTPSと公開HPからの最終送信テストは未完了です。** GitHub PagesはDNSの取得エラーを表示し、証明書の名前不一致が残っています。HTTPの公開サイトへの反映とメール相談の表示は確認しました。HTTPではフォームの入力を表示せず、HTTPSでは入力・確認・送信・成功／失敗の表示を利用できます。JavaScript無効時もメール相談先を表示します。フォームの内容は確認画面の最終ボタンでのみ送信し、ブラウザ内への永続保存は行いません。
+**2026年9月13日、HTTPSの有効化と公開フォームの送信完了表示まで確認しました。** 通常の証明書検証で公式URLは200応答となり、HTTP・www・旧GitHub Pages URLはHTTPSの公式URLへ301転送します。公開フォームからダミー問い合わせを1件送り、「ご相談を受け付けました。」の表示を確認しました。今回の通知メールの到着は、ウェブメールへの再ログイン後に確認する段階です。9月12日の受付先テストの通知受信とは区別しています。JavaScript無効時はメール相談先を表示します。フォームの内容は確認画面の最終ボタンでのみ送信し、ブラウザ内への永続保存は行いません。
 
 情報管理方針とプライバシーポリシーに、問い合わせ窓口・Formspree（米国での処理を含む）・さくら・GitHubの利用を記載しています。受託データの具体的な取り扱い条件は依頼ごとに確認します。正式公開の確認が残っているため `noindex,nofollow` を維持しています。検索除外はアクセス制限ではありません。
 
@@ -101,13 +101,13 @@ node finalize-static.mjs https://jimusoto.jp/
 | 空欄（jimusoto.jp） | A | 185.199.111.153 | 3600 |
 | www | CNAME | mshibasango-droid.github.io | 3600 |
 
-GitHub PagesのCustom domainは `jimusoto.jp`。`www.jimusoto.jp` と旧GitHub Pages URLから公式URLへの転送はGitHub Pagesが行います。DNS反映後に `Settings → Pages` の検証・証明書発行を確認し、`Enforce HTTPS` を有効にします。
+GitHub PagesのCustom domainは `jimusoto.jp`。`www.jimusoto.jp` と旧GitHub Pages URLから公式URLへの転送はGitHub Pagesが行います。2026年9月13日に `Settings → Pages` のDNS確認成功と証明書を確認し、`Enforce HTTPS` を有効にしました。
 
 公式ガイド：<https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site>
 
 ## 受付開始前に確定すること
 
-- 独自ドメインのHTTPSを有効化し、公開HPのフォームから実際の受信まで最終確認する
+- 公開HPのフォームから送った最終テストの通知を、メール受信箱で確認する（HTTPSと送信完了表示は確認済み）
 - 運営者氏名、住所、電話番号の公開範囲を確定する（問い合わせ窓口はinfo@jimusoto.jp）
 - データの保管・削除、秘密保持、外部サービスとAI利用の条件を実運用に合わせて確定する
 - 方針ページと受託時の運用条件に齟齬がないことを確認する
